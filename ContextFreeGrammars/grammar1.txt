@@ -1,0 +1,146 @@
+# This grammar uses a convention that
+#    - terminals are lowercase          (president)
+#    - preterminals are capitalized     (Noun)
+#    - other nonterminals are all-caps  (NP)
+#
+# This convention just makes grammars more readable to humans.  Thus:
+#
+#    - When *you* are writing grammars, you should
+#      follow this convention unless you have a good reason not to.
+#
+#    - But your *program* should still work with grammars that don't
+#      follow this convention.  It should not pay any attention to
+#      upper/lower case.  From your program's point of view,
+#      if there is at least one rule for rewriting a symbol, then
+#      that symbol is a nonterminal and should be rewritten.
+#######################
+
+# Rules for creating full sentences.
+
+1 ROOT	S .
+1 ROOT	S !
+# mixing terminals and nonterminals is ok.
+1 ROOT	is it true that S ?
+
+# The basic grammar rules.  Here's what the abbreviations stand for:
+#    S  = sentence
+#    NP = noun phrase
+#    VP = verb phrase
+#    PP = prepositional phrase
+#    Det = determiner (sometimes called "article")
+#    Prep = preposition
+#    Adj = adjective
+
+1 S	NP VP
+1 VP	Verb NP
+3 NP	Det Noun
+2 Noun	Adj Noun
+1 NP	NP PP
+1 PP	Prep NP
+
+
+# comment NP --> NP PP to generate short sentences
+
+# Vocabulary.  Your program can see that "ate" is a terminal
+# symbol because there exists no rule for rewriting it.
+# Any symbol that can rewrite as a terminal (or a string of
+# terminals, like "chief of staff") is called a "preterminal."  Notice
+# that a preterminal is a special kind of nonterminal.
+
+2 Verb	ate
+1 Verb	wanted
+2 Verb	kissed
+1 Verb	understood
+1 Verb	pickled
+
+3 Det	the
+2 Det	a
+1 Det	every
+
+3 Noun	president
+2 Noun	sandwich
+1 Noun	pickle
+2 Noun	chief of staff
+1 Noun	floor
+
+3 Adj	fine
+2 Adj	delicious
+1 Adj	perplexed
+1 Adj	pickled
+
+2 Prep	with
+1 Prep	on
+1 Prep	under
+1 Prep	in
+
+
+# 1. Why does the stub generate so many long sentences? Say which grammar rule is
+# responsible, and why. What is special about this rule?
+# -->
+# The rule that is generating such long sentences is "NP --> NP PP"
+# What's special about this rule? Well, with the rule ending in PP which in turn states
+# PP --> Prep NP, it gives rise to the recursive rule. For eg. say a sentence starts and ends with NP --> NP PP. Now
+# this PP again uses the PP --> Prep NP rule which can again call the NP --> NP PP rule (and so on)
+# I commented NP --> NP PP rule which ensured small sentences now (since I essentially cut the PP call)
+
+# 2. The grammar allows multiple adjectives, as in the fine perplexed pickle. Why do your
+# program’s sentences do this so rarely?
+# -->
+# multiple adjectives are generated due to the following rule ->
+# NP --> DET NOUN. Now here, due to random function, the function has 2 choices, either choose a simple noun from our
+# grammar, i.e. president, sandwich etc. or call the recursive Noun --> Adj Noun rule.
+# Now after this, it can either call itself again, i.e. Noun --> Adj Noun or this rule ends when it selects a simple
+# noun. This happens rarely, because we use a random function who has a bias (or greater say greater prob)
+# for choosing from the nouns list as they outnumber the only Noun --> ADJ Noun rule.
+# (Say I wanted to make sentences having multiple ADJs more freq, I can delete some options in Noun. That way the
+# program will be forced to keep on choosing the recursive rule.)
+
+# 1. Which numbers must you modify to fix the problems in 1/2 above, to make the sentences
+# shorter and the adjectives more frequent? Check your answer by generating some new example sentences.
+# -->
+# From my 1,2 answers: I need to make the NP --> NP PP less probable in order to generate smaller sentences.
+# Further, In order to increase adjectives, I need to make Noun --> ADJ Noun rule more probable.
+# I set NP --> NP PP to 1, Noun --> ADJ Noun to 2, and the main NP --> Det Noun to 3.
+# (Check) These numbers are arbitary untill I keep np --> np pp rule the least probable rule < np -> det noun.
+# After this, the noun --> adj noun should be second most probable rule.
+
+# 2. What other numeric adjustments can you make to the grammar in order to favor more
+# natural sets of sentences? Experiment. Discuss at least two adjustments you made - why are
+# they necessary and what is their effect?
+# --> In order to generate more 'grammatical' sentences, I can tweak the weight of certain words itself.
+# 1. I increase the weight of articles 'the' and 'a' and reduce 'every', just to make sentences start with 'the' and 'a'
+# more than 'every'
+
+# 2. Change the nouns, that can follow an adjective.
+# I made a logical sounding adjective - noun pairings.
+# fine forms (3) logical pairings (fine prez, fine sandwich, fine chief of staff)
+# delicious forms (2) logical pairs (delicious sandwhich, delicious pickle)
+# and so on... the weights were then tuned to above observation.
+
+# Further, the nouns were tuned again to make them logical with verbs and so on.
+# they are necessary as we can essentially choose which words are better off following the previous word. we can see
+# which word best follows given the previous word, and it's grammatical constituent.
+
+# Sentences generated after making the sentences. We see they are both shorter and contain more adjectives.
+# as far as meaning is concerened, they do make sense but in a surreal way (better than non-grammatical sentences)
+# --------------------------------------------------------------------------------------------------------------------
+
+# a chief of staff with a president ate every floor .
+
+# is it true that a delicious sandwich ate a perplexed pickle ?
+
+# every delicious president wanted a delicious chief of staff .
+
+# the sandwich on a pickle in the fine president ate the president !
+
+# a floor under the pickle in a president under a sandwich understood the chief of staff !
+
+# every pickled sandwich understood a floor .
+
+# a president understood the fine fine floor .
+
+# is it true that the pickle understood a president ?
+
+# a chief of staff ate the pickle .
+
+# a pickle wanted the chief of staff .

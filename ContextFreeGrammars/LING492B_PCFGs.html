@@ -1,0 +1,571 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+	font-family: Verdana, Geneva, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Verdana, Geneva, sans-serif;
+	margin: 20px 0 10px;
+  	padding: 0;
+  	font-weight: bold;
+  	-webkit-font-smoothing: antialiased;
+  	cursor: text;
+  	position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+	font-size: 28px;
+    border: 3px solid #892034; 
+    color: black;
+	text-align:right;
+}
+
+h2 {
+	font-size: 24px;
+	background-color:#892034; 
+    color: white; 
+}
+
+h3 {
+	font-size: 18px;
+    border-bottom: 1px solid #892034;
+	color: black; 
+}
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; 
+}
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+
+
+</style>
+<title>LINGUIST492B: Working with the treebank (PCFGs)</title>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax:{inlineMath:[['$$$','$$$']]}});</script><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<h1>LINGUIST492B: Working with the treebank (PCFGs)</h1>
+
+<h2>Frequency counts over structures</h2>
+
+<p>Now that we've gotten familiar with how to use the treebank, we are in a position to do frequency counts over the treebank. For instance, suppose we were interested in knowing the frequencies of different expansions of VP nodes in the corpus. We could start by pulling out all VP nodes:</p>
+
+<pre><code>import nltk
+from nltk.corpus import treebank
+from nltk.probability import *
+from nltk.grammar import *
+
+### Retrieve all trees
+my_trees = treebank.parsed_sents
+
+### Retrieve all VPs in the corpus
+VPTrees = [ subtree for tree in treebank.parsed_sents () for subtree in     tree.subtrees() if subtree.label() == 'VP']
+
+### For each VP, convert tree representation into production representation
+VPs = [ tree.productions()[0] for tree in VPTrees]
+VPs[0:10]
+
+### For each production, extract RHS
+VPexpansions = [ production.rhs() for production in VPs]
+
+### Code up a crack frequency counting function
+def frequencyCount(text):
+    freq_dictionary = dict.fromkeys(set(text),0)
+    for word in text:
+        freq_dictionary[word]   += 1
+    return(freq_dictionary)
+
+### Get frequency count and sorted list of expansions
+VPFreqDist = frequencyCount(VPexpansions)
+mostFreqVPs = sorted(VPFreqDist,key=VPFreqDist.get,reverse=True)
+
+### Inspect the most frequenct VPs
+mostFreqVPs[0:10]
+
+### Inspect the least frequenct VPs
+mostFreqVPs[-10:]
+
+### Just look at the most frequent VPs
+for VP in mostFreqVPs[0:10]:
+    print(str(VP)+': '+str(VPFreqDist[VP]))
+</code></pre>
+
+<p>OK, so now we've gotten a frequency count over all the VP expansions in our corpus. We know that there are 1257 infinitival expansions ('going to eat the cheese'), 805 simple present tense transitive VPs ('eat the cheese'), 759 VPs with a modal ('should eat the cheese'), etc.</p>
+
+<p>As before, we can take these frequency counts and turn them into a probability distribution pretty easily by just turning each frequency into a relative frequency:</p>
+
+<pre><code>def relFrequencyCount(text):
+    freq_dictionary = dict.fromkeys(set(text),0)
+    N = float(len(text))
+    for word in text:
+        freq_dictionary[word]   += 1
+    for word in freq_dictionary:
+        freq_dictionary[word]   = float(freq_dictionary[word])/N
+    return(freq_dictionary)
+
+VPrelFreqDist = relFrequencyCount(VPexpansions)
+mostFreqVPs = sorted(VPrelFreqDist,key=VPrelFreqDist.get,reverse=True)
+
+### Just look at the most frequent VPs
+for VP in mostFreqVPs[0:10]:
+    print(str(VP)+': '+str(VPrelFreqDist[VP]))
+</code></pre>
+
+<p>As always, whenever we have these relative frequencies, we have a maximum likelihood estimate of a probability. What kind of probabilities are these? What are the events?</p>
+
+<p>These probabilities are conditional probabilities: for each expansion, it is the probability of seeing that expansion given that we are expanding a VP node. For example, we see that P(TO VP|VP) = 0.0866, and P(VB NP|VP) = 0.0554. They will all sum to one. Therefore, we have an MLE probability distribution over the different expansions of the VP node in our corpus, which we arrived at by counting expansions of the VP node in the corpus, and taking the relative frequency.</p>
+
+<h2>PCFGs</h2>
+
+<p>What can we do with these probabilities? Well, if we appended them to our grammar, we would upgrade our context-free grammar to a <em>probabilistic</em> context free grammar. Let's look at a sample PCFG:</p>
+
+<pre><code>from nltk.grammar import toy_pcfg1
+print toy_pcfg1
+
+Grammar with 17 productions (start state = S)
+    S -&gt; NP VP [1.0]
+    NP -&gt; Det N [0.5]
+    NP -&gt; NP PP [0.25]
+    NP -&gt; 'John' [0.1]
+    NP -&gt; 'I' [0.15]
+    Det -&gt; 'the' [0.8]
+    Det -&gt; 'my' [0.2]
+    N -&gt; 'man' [0.5]
+    N -&gt; 'telescope' [0.5]
+    VP -&gt; VP PP [0.1]
+    VP -&gt; V NP [0.7]
+    VP -&gt; V [0.2]
+    V -&gt; 'ate' [0.35]
+    V -&gt; 'saw' [0.65]
+    PP -&gt; P NP [1.0]
+    P -&gt; 'with' [0.61]
+    P -&gt; 'under' [0.39]
+</code></pre>
+
+<p>This is essentially the same as a context free grammar, except now every rule has a probability associated with it. These probabilities are <strong>conditional</strong> probabilities of an expansion (right hand side) given the left hand side. Therefore, they must sum to one over all possible right hand sides (expansions) associated with a particular node.</p>
+
+<p>Above, we see that this is the case. There is only one way to expand <code>S</code>, so it has probability of 1. There are two ways to expand <code>N</code>, and each has probability of 0.5.</p>
+
+<p>Probabilistic context free grammars are a great tool for helping us navigate ambiguity in a principled way. Let's consider our favorite ambiguous sentence:</p>
+
+<pre><code>'I saw the man with a telescope'
+</code></pre>
+
+<p>We know that there are two parses for this under the grammar above. <strong>What are they?</strong></p>
+
+<p>Given a context free grammar, we can assign a probability to a whole parse. The first step in doing this is to think of the tree as a collection of node expansions, applications of the rules in our grammar. Next, we observe that given our PCFG language model, the expansion of a given node is conditionally independent of all other nodes. Therefore, the probability of seeing the entire tree will be the product of the probabilities of each rule used in generating the tree:</p>
+
+<p>Parse one:</p>
+
+<p>(S
+  (NP I)
+  (VP
+    (V saw)
+    (NP (NP (Det the) (N man)) (PP (P with) (NP John)))))</p>
+
+<p> This is the 'NP modification' parse, where it's the man with John who I saw (I may or may not have been with John myself). There are 11 productions used in creating this tree, and their production is 0.000208162. <strong>Check that you can reproduce this result!</strong></p>
+
+<p>Parse two:</p>
+
+<p> (S
+  (NP I)
+  (VP
+    (VP (V saw) (NP (Det the) (N man)))
+    (PP (P with) (NP John))))</p>
+
+<p>This is the 'VP modification' parse: here, I was with John when I saw the man, but John might not have been with the man. As before, there are 11 productions. But now, the probability of this tree is p=0.000083265. Much lower than the other one!</p>
+
+<p>This means that this parse is less probable than the other one, given our PCFG. Therefore, if we were to guess which parse is more likely on the basis of our PCFG model, we should guess that it is the NP modification parse. Why? What is it about the grammar that makes this the case?</p>
+
+<p>To recap:</p>
+
+<ul>
+<li>Probabilistic context free grammars are context free grammars with weights/probabiliites associated with the rules.</li>
+<li>The probabilities are conditional probabilities over possible expansions, given a node identity.</li>
+<li>Those probabilities must sum to 1 for a given node.</li>
+<li>We can estimate the probabilities for a PCFG using Maximum Likelihood Estimation (MLE).</li>
+<li>The MLE estimate for a given rule is the # of times that rule is observed in the corpus, over the total number of times the left hand side of that rule is observed (e.g. the # of VP -> NP PP divided by the total number of V).</li>
+</ul>
+
+
+<h2>Parsing with PCFGs</h2>
+
+<p>In the previous example, we drew out both trees, we calculated the probability of each, and then we chose the tree with the higher probability. However, in practice most strings we will observe will be <em>highly</em> ambiguous, and will have many possible parses. It won't be practical to enumerate all parses by hand and then rank them. Instead, we need a more efficient way to isolate and identify the target parse.</p>
+
+<p>Dynamic programming comes to our rescue again! It turns out that with a little ingenuity, the Viterbi Algorithm can be adapted to create a Viterbi parser. Let's first look at a demo and try to understand how the algorithm works. You can access a demo parse using a Viterbi parser with the following:</p>
+
+<pre><code>nltk.parse.viterbi.demo()
+</code></pre>
+
+<p>Choose the option that corresponds to the sentence we're currently analyzing.</p>
+
+<p>The output will consist of the grammar (we already saw that above) and the <strong>most likely constituents table</strong>. The MLC table is the equivalent of the lattice/chart for the Viterbi algorithm for HMMs, and it stores the most likely constituents that cover a certain span of the input.</p>
+
+<p>The Viterbi algorithm operates in a bottom up fashion. That is, it builds the tree from the leaves to the root node. Using an MLC table, this means the parser will first identify the most likely constituents that cover substrings of length 1. Once it has run through the sentence identifying the most likely constituents of length 1, then it will re-run the parse identifying the most likely constituents of length 2, and so on. Let's see how this works.</p>
+
+<p>First, our demo inserts tokens into the MLC table; this is just setting it up.</p>
+
+<pre><code>Inserting tokens into the most likely constituents table...
+   Insert: |=......| I
+   Insert: |.=.....| saw
+   Insert: |..=....| the
+   Insert: |...=...| man
+   Insert: |....=..| with
+   Insert: |.....=.| my
+   Insert: |......=| telescope
+</code></pre>
+
+<p>Next, it consults the grammar, and puts in the most likely constituents spanning a single element:</p>
+
+<pre><code>Finding the most likely constituents spanning 1 text elements...
+   Insert: |=......| NP -&gt; 'I' [0.15]               0.1500000000 
+   Insert: |.=.....| V -&gt; 'saw' [0.65]              0.6500000000 
+   Insert: |.=.....| VP -&gt; V [0.2]                  0.1300000000 
+   Insert: |..=....| Det -&gt; 'the' [0.8]             0.8000000000 
+   Insert: |...=...| N -&gt; 'man' [0.5]               0.5000000000 
+   Insert: |....=..| P -&gt; 'with' [0.61]             0.6100000000 
+   Insert: |.....=.| Det -&gt; 'my' [0.2]              0.2000000000 
+   Insert: |......=| N -&gt; 'telescope' [0.5]         0.5000000000
+</code></pre>
+
+<p>There is no ambiguity here, so the most likely constituent for every word is its part of speech tag. In addition to writing down the rule that is most likely to introduce each substring of length 1, the probability of that node (and its subtree) is appended to each rule.</p>
+
+<p>Next, the algorithm moves on to spans of length 2.</p>
+
+<pre><code>Finding the most likely constituents spanning 2 text elements...
+   Insert: |==.....| S -&gt; NP VP [1.0]               0.0195000000 
+   Insert: |..==...| NP -&gt; Det N [0.5]              0.2000000000 
+   Insert: |.....==| NP -&gt; Det N [0.5]              0.0500000000 
+</code></pre>
+
+<p>There are three 2-word constituents our grammar can identify in the sentence: a sentence that consists of 'I saw', and two NPs. The probabilities given to each of these constituents is the product of the probability of the rule that introduces that constituent, along with the products of the probabilities of each of the daughters of that rule. <strong>Can you say how the probability for the S node is calculated here?</strong></p>
+
+<p>Then, then algorithm moves on to spans of length 3, 4, and so on.</p>
+
+<pre><code>Finding the most likely constituents spanning 3 text elements...
+   Insert: |.===...| VP -&gt; V NP [0.7]               0.0910000000 
+   Insert: |....===| PP -&gt; P NP [1.0]               0.0305000000 
+Finding the most likely constituents spanning 4 text elements...
+   Insert: |====...| S -&gt; NP VP [1.0]               0.0136500000 
+Finding the most likely constituents spanning 5 text elements...
+   Insert: |..=====| NP -&gt; NP PP [0.25]             0.0015250000 
+</code></pre>
+
+<p>The critical part comes when the parser attempts to identify constituents that span 6 text elements: it is at this point, and only this point, that the two parses diverge. On the PP modification parse, the VP constituent that spans these 6 words is introduced by VP -> VP PP. On the NP modification parse, it is introduced by the rule VP -> V NP. We know how to calculate the probabilities of these two constituents: it is again the probability of the rule that introduces the constituent times the probabilities of all the daughter constituents. This yields:</p>
+
+<pre><code>Finding the most likely constituents spanning 6 text elements...
+   Insert: |.======| VP -&gt; VP PP [0.1]              0.0002775500 
+   Insert: |.======| VP -&gt; V NP [0.7]               0.0006938750
+  Discard: |.======| VP -&gt; VP PP [0.1]              0.0002775500 
+</code></pre>
+
+<p>Here, we see that the VP is more likely to be created using the VP -> VP PP rule. At this point, since there is a conflict for two VP nodes spanning this portion of the string, we simply discard the less probable parse, record only the most likely constituent, and continue on. The end comes soon:</p>
+
+<pre><code>Finding the most likely constituents spanning 7 text elements...
+   Insert: |=======| S -&gt; NP VP [1.0]               0.0001040812 
+</code></pre>
+</body>
+</html>
