@@ -1,4 +1,4 @@
-# Computational Linguistics & NLP Projects
+# [Computational Linguistics & NLP Projects](https://github.com/jatanjay/complinguistics)
 
 ## Projects Included:
 
