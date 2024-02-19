@@ -21,3 +21,5 @@
 5. **Albright&Hayes:**
    - Using string similarity and lexical analogy to model experimental data from Albright & Hayes's breakthrough 2001 paper.
    - Min Edit Algorithm, Dynamic Programming.
+
+[home](https://jatanjay.github.io/jatanjay/projects/)
